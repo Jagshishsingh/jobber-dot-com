@@ -8,7 +8,7 @@ function LoginBtns() {
             <div className="">
                 <h2>I am Employer</h2>
                 <p>Hire stall with ease</p>
-                <Button variant="contained" color="primary">Hire Now</Button>
+                <Button variant="contained" style={{'backgroundColor':'blue','color':'white'}}>Hire Now</Button>
             </div>
 
             <div className="">
