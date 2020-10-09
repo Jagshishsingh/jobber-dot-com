@@ -1,0 +1,21 @@
+.reviewElement{
+    display: flex;
+    background-color: rgb(198, 248, 248);
+    justify-content: space-around;
+    padding: 0 2rem;
+    border-radius: 1rem;
+    box-shadow: 5px 10px 18px #3d3c3c;
+}
+.review{
+    text-align: left;    
+}
+.reviewer >{
+    position: absolute;
+    
+}
+.reviewer > img{
+    display: block;
+    width: 0.5vw;
+    height: 5rem;
+    margin-top: 1rem;
+}
