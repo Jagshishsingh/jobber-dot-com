@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import { TextField, Button } from '@material-ui/core';
+import './LoginPage.css';
 
-function LoginPage({ open, setOpen }) {
+function LoginPage({ open, setOpen,values }) {
     const [emailVerifed, setEmailVerifed] = useState(false);
     const [passwordVerifed, setPasswordlVerifed] = useState(false);
 
@@ -19,14 +20,15 @@ function LoginPage({ open, setOpen }) {
     return (
         <div>
             {/* ------------------EMAIL MODAL---------------------- */}
-            <Modal open={open} onClose={() => { setOpen(false) }} center classNames={{
-                overlay: 'customOverlay',
-                modal: 'customModal',
-            }}
+            <Modal open={open} onClose={() => { setOpen(false) }} center
+                classNames={{
+                    overlay: 'customOverlay',
+                    modal: 'customModal',
+                }}
             >
                 <div class="login">
                     <h3>Login</h3>
-                    <p>Company login </p>
+                    <p>{values.customerType} Email </p>
                     <div class="">
                         <form action="" method="post">
                             <TextField label="Enter Email" />
@@ -35,23 +37,29 @@ function LoginPage({ open, setOpen }) {
                             > Click</Button>
                         </form>
                     </div>
+                    <p>SIGN UP INSTEAD</p>
                 </div>
             </Modal>
 
             {/* ------------------PASSWORD MODAL-------------------- */}
-            <Modal open={emailVerifed} center>
-                <div class="login">
-                    <h3>Login</h3>
-                    <p>Logged in </p>
-                    <div class="">
-                        <form action="" method="post">
-                            <TextField type="password" label="Enter Password" />
-                            <Button variant="contained" color="primary" style={{ 'display': 'block', 'margin-top': '1rem' }}
-                                onClick={() => passwordAuthentication(setPasswordlVerifed)}
-                            > Click</Button>
-                        </form>
+            <Modal open={emailVerifed} center onClose={() => { setEmailVerifed(false) }}
+                classNames={{
+                    overlay: 'customOverlay',
+                    modal: 'customModal',
+                }} >
+                    <div class="login">
+                        <h3>Login</h3>
+                        <p>{values.customerType} Password </p>
+                        <div class="">
+                            <form action="" method="post">
+                                <TextField type="password" label="Enter Password" />
+                                <Button variant="contained" color="primary" style={{ 'display': 'block', 'margin-top': '1rem' }}
+                                    onClick={() => passwordAuthentication(setPasswordlVerifed)}
+                                > Click</Button>
+                            </form>
+                        </div>
+                        <p>forgot password</p>
                     </div>
-                </div>
             </Modal>
         </div>
     )

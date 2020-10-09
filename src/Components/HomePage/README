@@ -10,6 +10,8 @@ Every Page has its own external css file of same name
 
 Material UI is used in many pages .
 
+react-responsive-modal is used for login pop modals
+
 
 
 CHANGES TO BE MADE:
