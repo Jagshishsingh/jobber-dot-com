@@ -8,3 +8,10 @@
     width: 100%;
     border-radius: 1rem;
   }
+
+  .formRow{
+    display:flex;
+    justify-content: space-around;
+    margin: 1rem 0;
+  }
+  

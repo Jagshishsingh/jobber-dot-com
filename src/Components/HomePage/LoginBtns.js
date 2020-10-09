@@ -2,14 +2,14 @@ import { Button } from '@material-ui/core';
 import React from 'react';
 import './LoginBtns.css'
 
-function LoginBtns({setOpenCompany,setOpenIndividual}) {
+function LoginBtns({setLoginCompany,setLoginIndividual}) {
     return (
         <div className="login_btns">
             <div className="">
                 <h2>I am Employer</h2>
                 <p>Hire stall with ease</p>
                 <Button variant="contained" style={{'backgroundColor':'blue','color':'white'}}
-                onClick={()=>setOpenCompany(true)}
+                onClick={()=>setLoginCompany(true)}
                 >Hire Now</Button>
             </div>
 
@@ -17,7 +17,7 @@ function LoginBtns({setOpenCompany,setOpenIndividual}) {
                 <h2>I am Candidate</h2>
                 <p>1,09,000 job openings all over India</p>
                 <Button variant="contained" style={{'backgroundColor':'blue','color':'white'}}
-                onClick={()=>setOpenIndividual(true)}
+                onClick={()=>setLoginIndividual(true)}
                 >Get Job Now</Button>
             </div>
         </div>

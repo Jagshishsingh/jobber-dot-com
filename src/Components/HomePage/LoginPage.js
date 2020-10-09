@@ -1,16 +1,22 @@
 import React, { useState } from 'react'
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button, MenuItem, Menu } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import './LoginPage.css';
+import SignUp from './SignUp';
 
-function LoginPage({ open, setOpen,values }) {
+function LoginPage({ login, setLogin, values }) {
     const [emailVerifed, setEmailVerifed] = useState(false);
     const [passwordVerifed, setPasswordlVerifed] = useState(false);
+    const [signUp, setSignUp] = useState(true);
+    const [forgotPassword, setforgotPassword] = useState(false)
+
+
 
     let emailAuthentication = (e) => { // CALLED WHEN EMAIL IS ENTERED
         e(true);  // AUTHENTICATION 
-        setOpen(false); // CLOSING CURRENT EMAIL MODAL
+        setLogin(false); // CLOSING CURRENT EMAIL MODAL
     }
 
     let passwordAuthentication = (e) => {
@@ -20,7 +26,7 @@ function LoginPage({ open, setOpen,values }) {
     return (
         <div>
             {/* ------------------EMAIL MODAL---------------------- */}
-            <Modal open={open} onClose={() => { setOpen(false) }} center
+            <Modal open={login} onClose={() => { setLogin(false) }} center
                 classNames={{
                     overlay: 'customOverlay',
                     modal: 'customModal',
@@ -36,8 +42,8 @@ function LoginPage({ open, setOpen,values }) {
                                 onClick={() => emailAuthentication(setEmailVerifed)}
                             > Click</Button>
                         </form>
+                        <Button color="primary" onClick={() => { setLogin(false); setSignUp(true); }}>Sign Up Instead !</Button>
                     </div>
-                    <p>SIGN UP INSTEAD</p>
                 </div>
             </Modal>
 
@@ -47,20 +53,31 @@ function LoginPage({ open, setOpen,values }) {
                     overlay: 'customOverlay',
                     modal: 'customModal',
                 }} >
-                    <div class="login">
-                        <h3>Login</h3>
-                        <p>{values.customerType} Password </p>
-                        <div class="">
-                            <form action="" method="post">
-                                <TextField type="password" label="Enter Password" />
-                                <Button variant="contained" color="primary" style={{ 'display': 'block', 'margin-top': '1rem' }}
-                                    onClick={() => passwordAuthentication(setPasswordlVerifed)}
-                                > Click</Button>
-                            </form>
-                        </div>
-                        <p>forgot password</p>
+                <div class="login">
+                    <h3>Login</h3>
+                    <p>{values.customerType} Password </p>
+                    <div class="">
+                        <form action="" method="post">
+                            <TextField type="password" label="Enter Password" />
+                            <Button variant="contained" color="primary" style={{ 'display': 'block', 'margin-top': '1rem' }}
+                                onClick={() => passwordAuthentication(setPasswordlVerifed)}
+                            > Click</Button>
+                        </form>
+                        <Button color="primary" onClick={() => { setEmailVerifed(false); setforgotPassword(true); }}>Forgot Password !</Button>
+
                     </div>
+                </div>
             </Modal>
+
+            {/* ------------------SIGN UP MODAL-------------------- */}
+            <Modal open={signUp} center onClose={() => { setSignUp(false) }}
+                classNames={{
+                    overlay: 'customOverlay',
+                    modal: 'customModal',
+                }} >
+                    <SignUp values={values} setSignUp={setSignUp}></SignUp>
+                </Modal>
+
         </div>
     )
 }

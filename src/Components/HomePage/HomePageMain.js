@@ -7,8 +7,8 @@ import LoginPage from './LoginPage';
 import Reviews from './Reviews';
 
 function HomePageMain() {
-    const [openIndividual, setOpenIndividual] = useState(false);
-    const [openCompany, setOpenCompany] = useState(false);
+    const [loginIndividual, setLoginIndividual] = useState(false);
+    const [loginCompany, setLoginCompany] = useState(false);
     {/* HERE ,PASS DIFFERENT VALUES OF COMPANY OR INDIVIDUAL */}
     const companyValues = { customerType: 'company' };
     const individualValues = { customerType: 'individual' }
@@ -16,15 +16,15 @@ function HomePageMain() {
         <div>
             <HomeNavbar></HomeNavbar>
             <Body></Body>
-            <LoginBtns setOpenIndividual={setOpenIndividual} setOpenCompany={setOpenCompany}></LoginBtns>
+            <LoginBtns setLoginIndividual={setLoginIndividual} setLoginCompany={setLoginCompany}></LoginBtns>
             <Reviews ></Reviews>
             <Footer></Footer>
             
-            <LoginPage open={openCompany} setOpen={setOpenCompany}
+            <LoginPage login={loginCompany} setLogin={setLoginCompany}
                 values={companyValues}>  
             </LoginPage>
 
-            <LoginPage open={openIndividual} setOpen={setOpenIndividual} 
+            <LoginPage login={loginIndividual} setLogin={setLoginIndividual} 
                 values={individualValues}>
             </LoginPage>
         </div>
