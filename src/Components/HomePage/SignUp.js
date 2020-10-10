@@ -33,14 +33,17 @@ function SignUp({values,setSignUp}) {
                         <TextField variant="outlined" label="Business Email" />
                         <TextField variant="outlined" label="Password" />
                     </div>
+
                     <div className="formRow">
                         <TextField variant="filled" label="Full Name" size="small" margin="dense" />
                         <TextField variant="filled" label="Phone Number" size="small" margin="dense" />
                     </div>
+
                     <div className="formRow">
                         <TextField variant="outlined" label="Company" size="small" margin="dense" />
                         <TextField variant="outlined" type="number" label="Company Size" size="small" margin="dense" />
                     </div>
+
                     <div className={`${classes.root} formRow`}>
                         <TextField variant="filled" select label="Country" value={country}
                             onChange={(e) => setCountry(e.target.value)}
@@ -48,9 +51,7 @@ function SignUp({values,setSignUp}) {
                             {countries.map(country => (
                                 <MenuItem key={country} value={country}>{country}</MenuItem>
                             ))}
-                        </TextField>
-                        
-                       
+                        </TextField>    
                     </div>
 
 
