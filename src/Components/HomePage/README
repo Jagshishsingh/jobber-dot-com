@@ -1,0 +1,22 @@
+HomePageMain makes all component calls 
+
+HomeNavbar : it offers navigation bar
+Body : it offers background image
+LoginBtns : it offers buttons to login
+Reviews : it offers two owl carousels : for company and for individuals
+Footer : it offers team name, button to scroll up, and subscribe to newsletter button
+
+Every Page has its own external css file of same name
+
+Material UI is used in many pages .
+
+react-responsive-modal is used for login pop modals
+
+
+
+CHANGES TO BE MADE:
+1.owl carousel is irresponsive, individual size increases and decreases with width of screen
+2.png images contain white background , that needs to be made transparent
+3. Color selection needs attention
+4. Footer grid is not responsive either , material ui grid is used, if needed make change in
+library
