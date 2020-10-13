@@ -4,7 +4,7 @@
   "description": "Job recruitment server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start":"nodemon index.js"
   },
   "author": "Shambhav Agarwal, Shreya Sharma, Jagshish Singh",
   "license": "ISC",
@@ -14,5 +14,8 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.10.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
