@@ -28,18 +28,17 @@ router.post('/:_id/addQuestion/:type', function (req, res) {
 router.get('/testFetch/:_id',function(req,res){
     testModel.findById(req.params._id,function (err,data) {
         if (err) return res.json({ error: err });
-
-        for(var key in data){
+        for(var key in data){          
             if (key.endsWith('Question')){
+                console.log(key);
                 questions=data[key]
-                for(element in questions){
-                    // WANT TO NOT SEND ANSWERS 
-                    // delete element.answerId
+                console.log("QUESTIONS: ",questions.length);
+                for(i in questions){
+                    questions[i].answerId = null
                 }
             }
         }
         res.json({data});
-
     })
 })
 
