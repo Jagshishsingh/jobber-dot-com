@@ -31,7 +31,7 @@ const aspirantSchema = mongoose.Schema({
     academics: [
         {
             startDate: Date,
-            endDate: Date,
+            // endDate: Date,
             grade: String,
             // instituteName: String,
             // degree: String,
@@ -43,10 +43,10 @@ const aspirantSchema = mongoose.Schema({
     workExperience:[
         {
             startDate:Date,
-            endDate:Date,
+            // endDate:Date,
             jobTitle:String,
             // currentlyWorking:Boolean,
-            // Company:String,
+            company:String,
             // Role:String,
             // achievementLink:String,
         }
@@ -54,8 +54,8 @@ const aspirantSchema = mongoose.Schema({
     projects:[
         {
             startDate:Date,
-            endDate:Date,
-            // projectTitle:String,
+            // endDate:Date,
+            projectTitle:String,
             // Description:String,
             // technologyUsed:[String],
             // VCSLinks:[String],
