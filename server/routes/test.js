@@ -46,7 +46,4 @@ router.delete('/:testId/deleteQuestion/:questionNo', function (req, res) {
 
 })
 
-router.post('/testing',function(req,res){
-    res.json({"name":"testing"});
-});
 module.exports = router
