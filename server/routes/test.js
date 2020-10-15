@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const testModel = require('../models/testModel');
 
-{/*------------------------------------------CREATE--------------------------------------------*/}
+{/*------------------------------------------CREATE--------------------------------------------*/ }
 
 // new test is initiated with title and company name
 router.post('/addTest', function (req, res) {
@@ -22,11 +22,10 @@ router.post('/addTest', function (req, res) {
 router.post('/:testId/addQuestion', function (req, res) {
 
     // in request body ,question and answerAndMarks field is required
-// which carries key-value pairs corrsponding to fields in testModel
+    // which carries key-value pairs corrsponding to fields in testModel
     testModel.findByIdAndUpdate(req.params.testId, {
         $push: {
             "questions": req.body.question,
-            "answersAndMarks": req.body.answerAndMarks
         }
     }, function (err, data) {
         if (err) return res.json({ error: err });
@@ -36,13 +35,13 @@ router.post('/:testId/addQuestion', function (req, res) {
 });
 
 
-{/*--------------------------------------------READ----------------------------------------------*/}
+{/*--------------------------------------------READ----------------------------------------------*/ }
 
 
 // to fetch complete test
 router.get('/fetch/:testId', function (req, res) {
 
-    testModel.findById(req.params.testId, { "answersAndMarks": 0 }, function (err, result) {
+    testModel.findById(req.params.testId, { "questions.answer": 0 }, function (err, result) {
         if (err) return res.json({ error: err });
         // console.log(result)
         return res.json({ result });
@@ -50,33 +49,67 @@ router.get('/fetch/:testId', function (req, res) {
 
 })
 
-{/*------------------------------------------UPDATE-------------------------------------------------*/}
 
-// updating a particular question
-router.post('/:testId/updateQuestion/:questionId', function (req, res) {
-    testModel.update({ $and: [{ "_id": req.params.testId }, { "questions._id": req.params.questionId }] },
-    {$set:{"questions.$":req.body.question,"answersAndMarks.$":req.body.answer,}},    
-    function (err, result) {
+// to fetch particular question of a particular test
+router.get('/fetch/:testId/fetchQuestion/:questionIndex', function (req, res) {
+
+    testModel.findById(req.params.testId, {
+        [`questions.${req.params.questionIndex}`]: 1,
+        [`questions.${req.params.questionIndex}.answer`]: 0
+    },
+        function (err, result) {
             if (err) return res.json({ error: err });
-            return res.json({result})
+            // console.log(result)
+            return res.json({ result });
         })
 
 })
 
-{/*----------------------------------------DELETE-----------------------------------------------*/}
+{/*------------------------------------------UPDATE-------------------------------------------------*/ }
+
+// updating a particular question
+router.post('/:testId/updateQuestion/:questionIndex', function (req, res) {
+    // const bodyParsed = JSON.parse(req.body);
+    const bodyParsed = req.body;
+    const projectionData = {}
+    for (var key in bodyParsed) {
+        projectionData[`questions.${req.params.questionIndex}.${key}`] = bodyParsed[key]
+    }
+    testModel.update({ "_id": req.params.testId },
+        {
+            $set: projectionData
+        },
+        function (err, result) {
+            if (err) return res.json({ error: err });
+            return res.json({ result })
+        })
+
+})
+
+// update using questionId 
+// router.post('/:testId/updateQuestion/:questionId', function (req, res) {
+//     testModel.update({ $and: [{ "_id": req.params.testId }, { "questions._id": req.params.questionId }] },
+//     {$set:{"questions.$":req.body.question,"answersAndMarks.$":req.body.answer,}},    
+//     function (err, result) {
+//             if (err) return res.json({ error: err });
+//             return res.json({result})
+//         })
+
+// })
+
+{/*----------------------------------------DELETE-----------------------------------------------*/ }
 
 
 // delete a particular question
-router.delete('/:testId/deleteQuestion/:questionNo', function (req, res) {
+router.delete('/:testId/deleteQuestion/:questionIndex', function (req, res) {
     testModel.update({ _id: req.params.testId }, {
         $unset: {
             [`questions.${req.params.questionNo}`]: 1,
-            [`answersAndMarks.${req.params.questionNo}`]: 1
         }
     },
         function (err, result) {
             if (err) return res.json({ error: err });
-            testModel.update({ _id: req.params.testId }, { $pull: { "questions": null, "answersAndMarks": null } }, function (err, result) {
+            testModel.update({ _id: req.params.testId }, { $pull: { "questions": null } }, function (err, result) {
                 return;
             });
         })
@@ -85,15 +118,15 @@ router.delete('/:testId/deleteQuestion/:questionNo', function (req, res) {
 
 
 // delete the whole test by _id
-router.delete('/:testId/deleteTest',function(req,res){
-    testModel.findByIdAndDelete(testId,function(err,result){
+router.delete('/:testId/deleteTest', function (req, res) {
+    testModel.findByIdAndDelete(testId, function (err, result) {
         if (err) return res.json({ error: err });
 
         return res.status();
     })
 })
 
-{/*------------------------------MODULE-EXPORT-----------------------------------*/}
+{/*------------------------------MODULE-EXPORT-----------------------------------*/ }
 
 module.exports = router
 
