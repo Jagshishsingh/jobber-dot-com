@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const bodyParser = require('body-parser');
 const testModel = require('../models/testModel');
 
 
@@ -13,11 +12,11 @@ router.post('/addTest', function (req, res) {
         return res.json({ _id: result._id });
     })
 });
-router.post('/:_id/addQuestion/:type', function (req, res) {
-    const type = req.params.type;
-    testModel.findByIdAndUpdate(req.params._id, {
+router.post('/:testId/addQuestion', function (req, res) {
+    testModel.findByIdAndUpdate(req.params.testId, {
         $push: {
-            [type]: req.body
+            "questions": req.body.question,
+            "answersAndMarks": req.body.answerAndMarks
         }
     }, function (err, data) {
         if (err) return res.json({ error: err });
@@ -25,22 +24,26 @@ router.post('/:_id/addQuestion/:type', function (req, res) {
     })
 
 });
-router.get('/testFetch/:_id',function(req,res){
-    testModel.findById(req.params._id,function (err,data) {
+router.get('/fetch/:testId', function (req, res) {
+
+    testModel.findById(req.params.testId, { answersAndMarks: 0 }, function (err, result) {
         if (err) return res.json({ error: err });
-        for(var key in data){          
-            if (key.endsWith('Question')){
-                console.log(key);
-                questions=data[key]
-                console.log("QUESTIONS: ",questions.length);
-                for(i in questions){
-                    questions[i].answerId = null
-                }
-            }
-        }
-        res.json({data});
+        // console.log(result)
+        return res.json({ result });
     })
+
 })
 
+router.delete('/:testId/deleteQuestion/:questionNo', function (req, res) {
+    testModel.update({ _id: req.params.testId }, { $unset: { [`questions.${req.params.questionNo}`]: 1,
+    [`answersAndMarks.${req.params.questionNo}`]: 1 } },
+        function (err, result) {
+            if (err) return res.json({ error: err });
+            testModel.update({ _id: req.params.testId }, { $pull: { "questions": null,"answersAndMarks":null } }, function (err, result) {
+                return;
+            });
+        })
+
+})
 
 module.exports = router
