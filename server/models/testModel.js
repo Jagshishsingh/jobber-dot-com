@@ -6,10 +6,6 @@ const testSchema = mongoose.Schema({
     questions:
         [
             {   
-                _id:{
-                    type: Number,
-                    required:true
-                },
                 question: String,
                 questionType: String,
                 options: [
@@ -23,10 +19,6 @@ const testSchema = mongoose.Schema({
         ],
     answersAndMarks: [
         {   
-            _id:{
-                type: Number,
-                required:true
-            },
             answerId: [String],
             positiveMarks: Number,
             negativeMarks: Number,

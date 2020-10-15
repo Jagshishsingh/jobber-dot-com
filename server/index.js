@@ -1,15 +1,16 @@
 require('dotenv').config()
 const express = require('express');
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');  
 const mongoose = require('mongoose');
 const cors = require('cors');
 const PORT = process.env.PORT;
 
-const aspirant = require('./routes/aspirant');
+const aspirant = require('./routes/aspirant');  
 const test = require('./routes/test');
 const app = express();
 
-mongoose.connect(process.env.DB_URL,{
+// mongoose connection
+mongoose.connect(process.env.DB_URL,{  
     useNewUrlParser:true,
     useUnifiedTopology:true
 })
@@ -18,14 +19,12 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-
+// routes related to aspirant side queries  
 app.use('/aspirant',aspirant);
 
+
+// routes related to access tests and quizes 
 app.use('/test',test);
-
-
-
-
 
 
 
