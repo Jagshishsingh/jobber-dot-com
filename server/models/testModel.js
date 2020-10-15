@@ -5,7 +5,7 @@ const testSchema = mongoose.Schema({
     companyName: String,
     questions:
         [
-            {   
+            {
                 question: String,
                 questionType: String,
                 options: [
@@ -14,16 +14,12 @@ const testSchema = mongoose.Schema({
                         choice: String,
                     }
                 ],
+                answer: [String],
+                positiveMarks: Number,
+                negativeMarks: Number,
 
             }
-        ],
-    answersAndMarks: [
-        {   
-            answerId: [String],
-            positiveMarks: Number,
-            negativeMarks: Number,
-        }
-    ]
+        ]
 
 })
 
