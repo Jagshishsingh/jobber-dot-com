@@ -42,7 +42,7 @@ router.post('/:testId/addQuestion', function (req, res) {
 // to fetch complete test
 router.get('/fetch/:testId', function (req, res) {
 
-    testModel.findById(req.params.testId, { answersAndMarks: 0 }, function (err, result) {
+    testModel.findById(req.params.testId, { "answersAndMarks": 0 }, function (err, result) {
         if (err) return res.json({ error: err });
         // console.log(result)
         return res.json({ result });
@@ -55,7 +55,7 @@ router.get('/fetch/:testId', function (req, res) {
 // updating a particular question
 router.post('/:testId/updateQuestion/:questionId', function (req, res) {
     testModel.update({ $and: [{ "_id": req.params.testId }, { "questions._id": req.params.questionId }] },
-    {$set:{"questions.$.question":"going bad ?"}},    
+    {$set:{"questions.$":req.body.question,"answersAndMarks.$":req.body.answer,}},    
     function (err, result) {
             if (err) return res.json({ error: err });
             return res.json({result})
