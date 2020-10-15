@@ -35,7 +35,7 @@ router.get('/fetch/:testId', function (req, res) {
 })
 
 router.delete('/:testId/deleteQuestion/:questionNo', function (req, res) {
-    testModel.update({ _id: req.params.testId }, { $unset: { [`questions.${req.params.questionNo}`]: 1,
+    testModel.update({ _id: req.params.testId }, { $unset: {
     [`answersAndMarks.${req.params.questionNo}`]: 1 } },
         function (err, result) {
             if (err) return res.json({ error: err });
