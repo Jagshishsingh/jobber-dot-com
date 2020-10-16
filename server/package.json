@@ -4,7 +4,7 @@
   "description": "Job recruitment server",
   "main": "index.js",
   "scripts": {
-    "start":"nodemon index.js"
+    "start": "nodemon index.js"
   },
   "author": "Shambhav Agarwal, Shreya Sharma, Jagshish Singh",
   "license": "ISC",
@@ -13,6 +13,8 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^5.3.0",
     "mongoose": "^5.10.9"
   },
   "devDependencies": {
