@@ -8,6 +8,8 @@ const aspirantModel = require('../models/aspirantModel');
 
 // adds a new user/aspirant
 router.post('/addUser', function (req, res) {
+    
+    
     //first apply express vaidator
 
     // name, email, password, dob, address is expected in request body    
@@ -22,6 +24,7 @@ router.post('/addUser', function (req, res) {
 
         // created result is returned
         return res.json({ result: result });
+        
     })
 });
 
