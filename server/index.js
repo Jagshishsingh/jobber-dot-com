@@ -7,6 +7,7 @@ const PORT = process.env.PORT;
 
 const aspirant = require('./routes/aspirant');  
 const test = require('./routes/test');
+const testCheck = require('./routes/testCheck');
 const app = express();
 
 // mongoose connection
@@ -26,6 +27,6 @@ app.use('/aspirant',aspirant);
 // routes related to access tests and quizes 
 app.use('/test',test);
 
-
+app.use('/testCheck',testCheck);
 
 app.listen(PORT,()=>console.log(`SERVER LISTENING AT ${PORT}`));
