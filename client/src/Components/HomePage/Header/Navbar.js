@@ -1,9 +1,9 @@
 import React from 'react';
 import { Avatar, Badge, Button, IconButton } from '@material-ui/core';
 import { Notifications } from '@material-ui/icons';
-import './HomeNavBar.css';
+import './Navbar.css';
 
-function HomeNavbar() {
+function Navbar() {
     return (
         <div className="navBar">
             <div className="navLeft">
@@ -20,4 +20,4 @@ function HomeNavbar() {
     )
 }
 
-export default HomeNavbar
+export default Navbar

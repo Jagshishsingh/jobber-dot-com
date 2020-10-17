@@ -1,17 +1,16 @@
 import React from 'react';
 import './App.css';
-import HomePageMain from './Components/HomePage/HomePageMain';
-import IndividualPageMain from './Components/IndividualPage/IndividualPageMain';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import HomePage from './Components/HomePage';
+import AspirantPage from './Components/AspirantPage';
 
 function App() {
   return (
     <Router>
     <div className="App">
-
         <Switch>
-          <Route path="/" exact component={HomePageMain}></Route>
-          <Route path="/individual" exact component={IndividualPageMain}></Route>
+          <Route path="/" exact component={HomePage}></Route>
+          <Route path="/aspirant" exact component={AspirantPage}></Route>
         </Switch>
       
 

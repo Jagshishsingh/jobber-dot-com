@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Body from './Body';
-import Footer from './Footer';
-import HomeNavbar from './HomeNavbar';
-import LoginBtns from './LoginBtns';
-import LoginPage from './LoginPage';
-import Reviews from './Reviews';
+import Body from './Body/Body';
+import Reviews from './Body/Reviews';
+import Footer from './Footer/Footer';
+import Navbar from './Header/Navbar';
+import LoginPage from './LoginPage/LoginPage';
 
-function HomePageMain() {
+
+export default function HomePage() {
     const [loginIndividual, setLoginIndividual] = useState(false);
     const [loginCompany, setLoginCompany] = useState(false);
     {/* HERE ,PASS DIFFERENT VALUES OF COMPANY OR INDIVIDUAL */}
@@ -14,9 +14,8 @@ function HomePageMain() {
     const individualValues = { customerType: 'individual' }
     return (
         <div>
-            <HomeNavbar></HomeNavbar>
-            <Body></Body>
-            <LoginBtns setLoginIndividual={setLoginIndividual} setLoginCompany={setLoginCompany}></LoginBtns>
+            <Navbar></Navbar>
+            <Body setLoginIndividual={setLoginIndividual} setLoginCompany={setLoginCompany}></Body>
             <Reviews ></Reviews>
             <Footer></Footer>
             
@@ -31,7 +30,6 @@ function HomePageMain() {
     )
 }
 
-export default HomePageMain
 
 
 

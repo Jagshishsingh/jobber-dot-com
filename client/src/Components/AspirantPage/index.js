@@ -1,6 +1,6 @@
 import React from 'react'
 
-function IndividualPageMain() {
+export default function AspirantPage() {
     return (
         <div>
             <h1>I am individual</h1>
@@ -8,4 +8,3 @@ function IndividualPageMain() {
     )
 }
 
-export default IndividualPageMain
