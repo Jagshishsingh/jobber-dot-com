@@ -1,0 +1,16 @@
+Mongodb, Express, Node js are the main technologies used in this server side project
+"package.json" carries list of all other dependencies, and dev dependencies used for development 
+
+
+"index.js" is main file for routing and express app is created in the same file
+
+"/routes" folder carries CRUD operations, routes according to different aspects
+    (1) "aspirant.js" for routes related to aspirant, who is seeking job
+    (2) "company.js" for routes related to company ,which is offering jobs
+    (3) "test.js" for routes related to tests organised by a company and given by an aspirant
+    (4) "testCheck.js" is for routes which will be called after test submition by the aspirant
+
+"/models" folder carries mongoose models, which are used to send data to mongodb database
+    (1) "aspirantModel.js"
+    (2) "companyModel.js"
+    (3) "testModel.js"
