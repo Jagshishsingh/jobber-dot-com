@@ -1,6 +1,6 @@
 import React from 'react'
 import { Profile, Home } from './pages';
-import { SideNavBar } from './common'
+import { SideNavBar } from '../common'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
 

@@ -44,25 +44,13 @@ const companySchema = mongoose.Schema({
         
 
     },
-    // role:[
-    //     {
-    //        intern : Boolean,
-    //        fullTime :Boolean,
-    //        required: true
-    //     }
-    // ],
-   skills:
-       [
-        //    android: Boolean,
-        //    Java: Boolean,
-        //    webDevlopment: Boolean,
-        //    cPP: Boolean,
-        //    c:Boolean,
-        //    python:Boolean
-     String
+    jobs:[{
+        role:String,
+        skills:[String],
 
-       ]
-,
+
+    }],
+  
     // workExperience:{
     //     type: Number,
     //     required :true

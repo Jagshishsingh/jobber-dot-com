@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, NavLink, Redirect } from 'react-router
 
 
 const useStyles = createUseStyles({
-    root: {
+    root: { 
         height: '100%',
         width: '20%',
         background: 'red',
