@@ -11,6 +11,11 @@ const aspirantSchema = mongoose.Schema({
             required: true
         }
     },
+    userName:{
+        type: String,
+        required: true,
+        unique :true
+    },
     email: {
         type: String,
         required: true,
