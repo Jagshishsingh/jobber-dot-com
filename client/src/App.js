@@ -3,18 +3,20 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import HomePage from './Components/HomePage';
 import AspirantPage from './Components/AspirantPage';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <Router>
-    <div className="App">
+      <div className="App">
         <Switch>
           <Route path="/" exact component={HomePage}></Route>
-          <Route path="/aspirant" exact component={AspirantPage}></Route>
+          <Route path="/aspirant"
+            render={({match}) => (<AspirantPage matchUrl={match.url}/>)}></Route>
         </Switch>
-      
 
-    </div>
+
+      </div>
     </Router>
   );
 }

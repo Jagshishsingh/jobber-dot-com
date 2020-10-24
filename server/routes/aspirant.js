@@ -51,11 +51,32 @@ router.post('/addInfo/:_id/:field', function (req, res) {
 
 // use to access specific fields of user 
 // "field" key is expected in request body , list of all the fields required 
-router.post('/info/:_id', function (req, res) {
+// router.post('/info/:_id', function (req, res) {
+
+
+//     if (!req.body.fields) {
+//         aspirantModel.findById(req.params._id, function (error, data) {
+//             if (error) return res.json({ error });
+//             // required fields are returned in JSON format
+//             return res.json({ data });
+//         })
+//     }
+//     // temporary storing fields in key value pair to use in mongoose projection
+//     // where value is 1 for required fields
+//     const fields = {}
+//     req.body.fields.forEach(element => { fields[element] = 1 });
+
+//     aspirantModel.findById(req.params._id, fields, function (error, data) {
+//         if (error) return res.json({ error });
+//         // required fields are returned in JSON format
+//         return res.json({ data });
+//     })
+// })
+router.post('/info/:userName', function (req, res) {
 
 
     if (!req.body.fields) {
-        aspirantModel.findById(req.params._id, function (error, data) {
+        aspirantModel.find({userName=req.params.userName}, function (error, data) {
             if (error) return res.json({ error });
             // required fields are returned in JSON format
             return res.json({ data });
@@ -66,7 +87,7 @@ router.post('/info/:_id', function (req, res) {
     const fields = {}
     req.body.fields.forEach(element => { fields[element] = 1 });
 
-    aspirantModel.findById(req.params._id, fields, function (error, data) {
+    aspirantModel.find({userName=req.params.userName}, fields, function (error, data) {
         if (error) return res.json({ error });
         // required fields are returned in JSON format
         return res.json({ data });
