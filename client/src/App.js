@@ -18,6 +18,7 @@ function App() {
           <Route path="/" exact component={HomePage}></Route>
           <Route path="/aspirant"
             render={({match}) => (<AspirantPage matchUrl={match.url}/>)}></Route>
+            {/* THIS ROUTE IS BETTER SET IN HOMEPAGE LOGIN WITH HOC CONTAINING USERNAME */}
           <Route path="/jobs"
             render={({match}) => (<JobsPage matchUrl={match.url}/>)}></Route>
         </Switch>
