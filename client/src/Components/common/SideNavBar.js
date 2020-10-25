@@ -5,18 +5,18 @@ import { BrowserRouter as Router, Switch, NavLink, Redirect } from 'react-router
 
 
 const useStyles = createUseStyles({
-    root: { 
+    root: {
         height: '100%',
         width: '20%',
         background: 'red',
         display: 'flex',
         position: 'absolute',
     },
-    sideNavButton: {    
+    sideNavButton: {
         borderRadius: 0,
         backgroundColor: 'orange',
-        width:'100%',
-        
+        width: '100%',
+
     }
 })
 
@@ -25,17 +25,21 @@ function SideNavBar() {
 
     return (
         <div className={styles.root}>
-                <Container >
+            <Container >
+                {/* --------------------HOME ---------------------- */}
 
-                    <NavLink to="/aspirant" style={{ textDecoration: 'none' }}>
+                <NavLink to="/aspirant" style={{ textDecoration: 'none' }}>
                     <Row><Button variant="primary" size="lg" block
                         className={styles.sideNavButton}>HOME</Button></Row>
-                        </NavLink>
-                    <NavLink to="/aspirant/profile" style={{ textDecoration: 'none' }}>
+                </NavLink>
+
+                {/* --------------------PROFILE---------------------- */}
+
+                <NavLink to="/aspirant/profile" style={{ textDecoration: 'none' }}>
                     <Row><Button variant="primary" size="lg" block
                         className={styles.sideNavButton}>PROFILE</Button></Row>
-                        </NavLink>
-                </Container>
+                </NavLink>
+            </Container>
 
         </div>
     )

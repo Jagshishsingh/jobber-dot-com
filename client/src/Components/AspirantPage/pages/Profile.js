@@ -17,21 +17,27 @@ const useStyles = createUseStyles({
 function Profile() {
     const styles = useStyles();
     const [newSpace, setNewSpace] = useState("")
+
+    // this is fake data for developing purposes
+    //---------------------------DEVELOPMENT DATA----------------------------------//
     var data = {
-        _id:11,
+        _id: 11,
         name: "Jagshish",
         school: "aa",
         academics: [{
-            _id:1,
+            _id: 1,
             degree: "B.tech.",
             college: "MNNIT"
         }, {
-            _id:2,
+            _id: 2,
             degree: "ITI",
             college: "IITK"
         }]
     }
+    //------------X--------------DEVELOPMENT DATA------------------X---------------//
 
+
+    // this hook is to handle data fetching from server, about profile of aspirant
     useEffect(() => {
         axios({
             method: "get",
@@ -45,25 +51,30 @@ function Profile() {
 
     }, [])
 
-    // useEffect(() => {
-        
-    // }, [newSpace])
+   
 
     return (
         <div>
+            {/* ----------------------------NAVBAR------------------------- */}
             <NavBar />
+
+            {/* ----------------------------SIDEBAR------------------------- */}
+
             <SideNavBar />
+
+            {/* ----------------------------BODY------------------------- */}
             <div className={styles.body}>
                 <h1 >PROFILE</h1>
-                {/* {Object.keys(data).map(key => (
-                    <h1>{key}: {data[key]}</h1>)
-                )} */}
-                <AddSpace setNewSpace={setNewSpace}></AddSpace>
+                {/* field for adding a new space */}
+                <AddSpace setNewSpace={setNewSpace}></AddSpace>//
+
+                {/* all academics related cards  */}
                 {
-                    data.academics.map((element)=>
-                       ( <Academics key={element._id} academics={element}/>)
+                    data.academics.map((element) =>
+                        (<Academics key={element._id} academics={element} />)
                     )
                 }
+                
 
             </div>
 
