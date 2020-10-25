@@ -9,10 +9,7 @@ const testSchema = mongoose.Schema({
                 question: String,
                 questionType: String,
                 options: [
-                    {
-                        choiceId: String,
-                        choice: String,
-                    }
+                    String
                 ],
                 answer: [String],
                 positiveMarks: Number,

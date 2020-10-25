@@ -7,6 +7,7 @@ import HomePage from './Components/HomePage';
 import AspirantPage from './Components/AspirantPage';
 import JobsPage from './Components/JobsPage'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import TestPage from './Components/TestPage';
 
 require('dotenv').config();
 
@@ -21,6 +22,8 @@ function App() {
             {/* THIS ROUTE IS BETTER SET IN HOMEPAGE LOGIN WITH HOC CONTAINING USERNAME */}
           <Route path="/jobs"
             render={({match}) => (<JobsPage matchUrl={match.url}/>)}></Route>
+          <Route path="/test"
+            render={({match}) => (<TestPage  matchUrl={match.url}/>)}></Route>
         </Switch>
 
 
