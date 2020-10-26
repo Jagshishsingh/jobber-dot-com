@@ -2,9 +2,7 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { Container, Row } from 'react-bootstrap';
 import { createUseStyles } from 'react-jss';
-import { NavBar } from '../common'
 import { Job } from './common'
-import SideFilter from './pages/SideFilter'
 const SERVER_BASE_ADDRESS = process.env.SERVER_BASE_ADDRESS
 
 const useStyles = createUseStyles({
@@ -16,7 +14,7 @@ const useStyles = createUseStyles({
 
 })
 
-function JobsPage() {
+function JobsPage(props) {
     const styles = useStyles();
     var data = [{
         title: "Web",
@@ -35,6 +33,9 @@ function JobsPage() {
         axios({
             method: "post",
             url: `${SERVER_BASE_ADDRESS}/jobs`,
+            data:{
+                filters:props.filters
+            }
         }).then((err, res) => {
             if (err) {
                 return;
@@ -45,8 +46,6 @@ function JobsPage() {
     }, [])
     return (
         <div>
-            <NavBar />
-            <SideFilter />
             <Container className={styles.body}>
                 {
                     data.map(item => {

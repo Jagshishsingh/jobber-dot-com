@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { Col, Container, Row,Form } from 'react-bootstrap'
 import axios from 'axios'
-import { SingleChoiceQuestion, MultipleChoiceQuestion } from '../common'
+import React, { useEffect, useState } from 'react'
+import { Col, Container, Form, Row } from 'react-bootstrap'
+
+import { MultipleChoiceQuestion, SingleChoiceQuestion } from './common'
 
 const SERVER_BASE_ADDRESS = process.env.SERVER_BASE_ADDRESS
 

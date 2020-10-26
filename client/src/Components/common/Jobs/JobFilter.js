@@ -13,7 +13,7 @@ const useStyles = createUseStyles({
     }
 })
 
-function SideFilter() {
+function JobFilter() {
 
     const styles = useStyles();
 
@@ -24,4 +24,4 @@ function SideFilter() {
     )
 }
 
-export default SideFilter
+export default JobFilter

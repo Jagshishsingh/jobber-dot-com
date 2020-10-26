@@ -2,24 +2,19 @@ const mongoose = require('mongoose');
 
 const aspirantSchema = mongoose.Schema({
     name: {
-        firstName: {
-            type: String,
-            required: true
-        },
-        lastName: {
-            type: String,
-            required: true
-        }
+        type: String,
+        required: true
+
     },
-    userName:{
+    userName: {
         type: String,
         required: true,
-        unique :true
+        unique: true
     },
     email: {
         type: String,
         required: true,
-        unique :true
+        unique: true
     },
     // password: {
     //     type: String,
@@ -45,31 +40,31 @@ const aspirantSchema = mongoose.Schema({
             // affiliation: String
         }
     ],
-    workExperience:[
+    workExperience: [
         {
-            startDate:Date,
+            startDate: Date,
             // endDate:Date,
-            jobTitle:String,
+            jobTitle: String,
             // currentlyWorking:Boolean,
-            company:String,
+            company: String,
             // Role:String,
             // achievementLink:String,
         }
     ],
-    projects:[
+    projects: [
         {
-            startDate:Date,
+            startDate: Date,
             // endDate:Date,
-            projectTitle:String,
+            projectTitle: String,
             // Description:String,
             // technologyUsed:[String],
             // VCSLinks:[String],
         }
     ],
-    achievements:[
+    achievements: [
         {
-            dateOfIssue:Date,
-            issuingAuthority:String,
+            dateOfIssue: Date,
+            issuingAuthority: String,
             // competitionName:String,
             // rank:String,
             // result:{
@@ -78,13 +73,13 @@ const aspirantSchema = mongoose.Schema({
             // }
         }
     ],
-    skills:[
+    skills: [
         {
-            skill:String,
-            selfRating:{
-                type:Number,
-                min:0,
-                max:10
+            skill: String,
+            selfRating: {
+                type: Number,
+                min: 0,
+                max: 10
             }
         }
     ]
