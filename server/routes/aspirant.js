@@ -76,7 +76,7 @@ router.post('/info/:userName', function (req, res) {
 
 
     if (!req.body.fields) {
-        aspirantModel.find({userName=req.params.userName}, function (error, data) {
+        aspirantModel.find({userName:req.params.userName}, function (error, data) {
             if (error) return res.json({ error });
             // required fields are returned in JSON format
             return res.json({ data });
@@ -87,7 +87,7 @@ router.post('/info/:userName', function (req, res) {
     const fields = {}
     req.body.fields.forEach(element => { fields[element] = 1 });
 
-    aspirantModel.find({userName=req.params.userName}, fields, function (error, data) {
+    aspirantModel.find({userName:req.params.userName}, fields, function (error, data) {
         if (error) return res.json({ error });
         // required fields are returned in JSON format
         return res.json({ data });
