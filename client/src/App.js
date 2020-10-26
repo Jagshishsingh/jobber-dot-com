@@ -23,7 +23,7 @@ function App() {
           <Route path="/jobs"
             render={({match}) => (<JobsPage matchUrl={match.url}/>)}></Route>
           <Route path="/test"
-            render={({match}) => (<TestPage  matchUrl={match.url}/>)}></Route>
+            render={({match}) => (<TestPage  matchUrl={match.url} />)}></Route>
         </Switch>
 
 
