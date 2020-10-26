@@ -2,9 +2,9 @@ import React, { createContext } from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import AspirantPage from './Components/AspirantPage';
+import { UserContext } from './Components/common'
 import CompanyPage from './Components/CompanyPage';
 import HomePage from './Components/HomePage';
-import { UserContext} from './Components/common'
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -21,7 +21,7 @@ function App() {
   }
 
   const fakeCompany = {
-    name: "Facebook",
+    companyName: "Facebook",
     userName: "facebookFree"
   }
 

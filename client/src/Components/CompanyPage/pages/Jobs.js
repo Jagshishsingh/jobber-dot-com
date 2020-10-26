@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { JobsPage, NavBar, SideNavBar } from '../../common'
+import { JobAdd, JobsPage, NavBar, SideNavBar } from '../../common'
 
 function Jobs() {
     var filters ={
@@ -10,7 +10,7 @@ function Jobs() {
         <div>
             <NavBar/>
             <SideNavBar></SideNavBar>
-            <JobsPage filters={filters}/>
+            <JobsPage filters={filters} companySide={true}/>
         </div>
     )
 }

@@ -1,9 +1,8 @@
-import React, { useState,useContext } from 'react';
-import { Button, Card, Form } from 'react-bootstrap'
 import axios from 'axios'
+import React, { useContext, useState } from 'react';
+import { Button, Card, Form } from 'react-bootstrap'
 
 import { UserContext } from '../../common'
-
 
 const SERVER_BASE_ADDRESS = process.env.SERVER_BASE_ADDRESS;
 function Academics(props) {

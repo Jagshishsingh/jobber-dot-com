@@ -1,8 +1,8 @@
 import axios from 'axios'
-import React, { useEffect, useState,useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { createUseStyles } from 'react-jss'
 
-import { NavBar, SideNavBar,UserContext } from '../../common'
+import { NavBar, SideNavBar, UserContext } from '../../common'
 import { Academics, AddSpace, WorkExperience } from '../profileCards'
 
 const SERVER_BASE_ADDRESS = process.env.SERVER_BASE_ADDRESS;

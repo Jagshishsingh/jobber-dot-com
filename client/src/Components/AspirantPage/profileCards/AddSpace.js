@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react'
-import { Card, Button, Row, Form } from 'react-bootstrap'
+import React, { useRef, useState } from 'react'
+import { Button, Card, Form, Row } from 'react-bootstrap'
 
 function AddSpace({ setNewSpace }) { // setNewSpace is used to set whether to make a new field
     // or now and which field (academics/workExperience/Project etc) to make
