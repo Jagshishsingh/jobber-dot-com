@@ -5,16 +5,18 @@ import { Button, Card, Form } from 'react-bootstrap'
 import { UserContext } from '../../common'
 
 const SERVER_BASE_ADDRESS = process.env.SERVER_BASE_ADDRESS;
-function Academics(props) {
-    const [readOnly, setReadOnly] = useState(true) // to allow or stop editing in current card 
-    const [academics, setAcademics] = useState(props.academics) // to make changes in current 
 
-    const data = useContext(UserContext)
+
+function ProfileCard(props) {
+    const [readOnly, setReadOnly] = useState(true) // to allow or stop editing in current card 
+    const [element, setElement] = useState(props.element) // to make changes in current 
+
+    const userContextData = useContext(UserContext)
 
 
     const changeField = (e) => {
-        setAcademics({
-            ...academics,
+        setElement({
+            ...element,
             [e.target.name]: e.target.value
         })
     }
@@ -22,8 +24,9 @@ function Academics(props) {
         if (!readOnly) {
             axios({
                 method: 'post',
-                url: `${SERVER_BASE_ADDRESS}/aspirant/${data.userName}/addInfo/academics`,
-                data: academics
+                url: `${SERVER_BASE_ADDRESS}/aspirant/
+                ${userContextData.userName}/addInfo/${props.elementType}`,
+                data: element
             }).then((err) => {
                 if (err) {
                     return;
@@ -37,17 +40,17 @@ function Academics(props) {
 
     return (
         <Card bg="light" border="success">
-            <Card.Header>Academics</Card.Header>
+            <Card.Header>{props.elementType}</Card.Header>
             <Card.Body>
                 <Button variant="success" className="float-right"
                     onClick={() => editButtonHandler()}
                 >{readOnly ? 'EDIT' : 'DONE'}</Button>
                 <Form >
                     {
-                        Object.keys(academics).map((key) => (
+                        Object.keys(element).map((key) => (
                             <Form.Group>
                                 <Form.Label>{key}</Form.Label>
-                                <Form.Control value={academics[key]} name={key}
+                                <Form.Control value={element[key]} name={key}
                                     onChange={(e) => changeField(e)}
                                     readOnly={readOnly}></Form.Control>
                             </Form.Group>
@@ -60,4 +63,4 @@ function Academics(props) {
     )
 }
 
-export default Academics
+export default ProfileCard

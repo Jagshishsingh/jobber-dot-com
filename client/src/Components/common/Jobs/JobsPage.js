@@ -21,13 +21,6 @@ const useStyles = createUseStyles({
 function JobsPage(props) {
     const userData = useContext(UserContext)
 
-    const styles = useStyles();
-    const [jobDone, setJobDone] = useState(false)
-    var initialStateNewJob = {
-        title: "",
-        salary: null,
-    }
-    const [newJob, setNewJob] = useState(initialStateNewJob)
     var fakeData = [{
         title: "Web",
         salary: 5000,
@@ -39,6 +32,14 @@ function JobsPage(props) {
         companyName: userData.companyName
     },
     ]
+    var initialStateNewJob = {
+        title: "",
+        salary: null,
+    }
+
+    const styles = useStyles();
+    const [jobDone, setJobDone] = useState(false)   
+    const [newJob, setNewJob] = useState(initialStateNewJob)   
     const [data, setData] = useState(fakeData)
 
 
@@ -59,10 +60,8 @@ function JobsPage(props) {
                  // it would be in above promise once server is working
       
         // setNewJob({...newJob,companyName:userData.companyName})
-        console.log(data)
         const tempData = data.concat([newJob])
         setData(tempData);
-        console.log(data)
         setNewJob(initialStateNewJob)
         setJobDone(false)
 
@@ -90,7 +89,8 @@ function JobsPage(props) {
                 {
                     props.companySide ? 
                     <JobAdd jobDone = {jobDone} setJobDone={setJobDone} 
-                    newJob={newJob} setNewJob={setNewJob}/> : null
+                    newJob={newJob} setNewJob={setNewJob}
+                    initialStateNewJob={initialStateNewJob}/> : null
                 }
                 {
                     data.map(item => {

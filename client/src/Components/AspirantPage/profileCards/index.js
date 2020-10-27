@@ -1,5 +1,4 @@
-import Academics from './Academics';
-import WorkExperience from './WorkExperience'
 import AddSpace from './AddSpace';
+import ProfileCard from './ProfileCard'
 
-export {Academics,WorkExperience,AddSpace}
+export {ProfileCard,AddSpace}
